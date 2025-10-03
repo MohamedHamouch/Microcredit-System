@@ -1,14 +1,12 @@
 package entities.models;
 
-import entities.enums.EmploiSecteur;
 import entities.enums.TypeContrat;
 
-public class Employe {
+public class Employe extends Personne {
     private Double salaire;
     private Integer anciennete;
     private String poste;
     private TypeContrat typeContrat;
-    private EmploiSecteur secteur;
 
     public Double getSalaire() {
         return salaire;
@@ -41,12 +39,10 @@ public class Employe {
     public void setTypeContrat(TypeContrat typeContrat) {
         this.typeContrat = typeContrat;
     }
-
-    public EmploiSecteur getSecteur() {
-        return secteur;
-    }
-
-    public void setSecteur(EmploiSecteur secteur) {
-        this.secteur = secteur;
+    
+    @Override
+    public String toString() {
+        return super.toString() + String.format(" - Employé: %s, Salaire: %.2f DH, Ancienneté: %d ans, Contrat: %s", 
+            poste, salaire, anciennete, typeContrat.getDescription());
     }
 }

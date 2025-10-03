@@ -1,5 +1,10 @@
 package entities.enums;
 
 public enum SituationFamiliale {
-    Marrie, Celibataire
+    MARIE("Marié"),
+    CELIBATAIRE("Célibataire");
+
+    private final String label;
+    SituationFamiliale(String label) { this.label = label; }
+    public String getLabel() { return label; }
 }

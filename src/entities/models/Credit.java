@@ -1,19 +1,34 @@
 package entities.models;
 
 import entities.enums.Decision;
-import entities.enums.TypeCredit;
-
 import java.time.LocalDate;
 
 public class Credit {
     private Integer id;
+    private Integer personneId;
     private LocalDate dateCredit;
-    private Dobule mantantDemande;
-    private Dobule montantCtroye;
-    private Dobule tauxInteret;
+    private Double montantDemande;
+    private Double montantOctroye;
+    private Double tauxInteret;
     private Integer dureeEnMois;
-    private TypeCredit typeCredit;
+    private String typeCredit;
     private Decision decision;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getPersonneId() {
+        return personneId;
+    }
+
+    public void setPersonneId(Integer personneId) {
+        this.personneId = personneId;
+    }
 
     public LocalDate getDateCredit() {
         return dateCredit;
@@ -23,27 +38,27 @@ public class Credit {
         this.dateCredit = dateCredit;
     }
 
-    public Dobule getMantantDemande() {
-        return mantantDemande;
+    public Double getMontantDemande() {
+        return montantDemande;
     }
 
-    public void setMantantDemande(Dobule mantantDemande) {
-        this.mantantDemande = mantantDemande;
+    public void setMontantDemande(Double montantDemande) {
+        this.montantDemande = montantDemande;
     }
 
-    public Dobule getMontantCtroye() {
-        return montantCtroye;
+    public Double getMontantOctroye() {
+        return montantOctroye;
     }
 
-    public void setMontantCtroye(Dobule montantCtroye) {
-        this.montantCtroye = montantCtroye;
+    public void setMontantOctroye(Double montantOctroye) {
+        this.montantOctroye = montantOctroye;
     }
 
-    public Dobule getTauxInteret() {
+    public Double getTauxInteret() {
         return tauxInteret;
     }
 
-    public void setTauxInteret(Dobule tauxInteret) {
+    public void setTauxInteret(Double tauxInteret) {
         this.tauxInteret = tauxInteret;
     }
 
@@ -55,11 +70,11 @@ public class Credit {
         this.dureeEnMois = dureeEnMois;
     }
 
-    public TypeCredit getTypeCredit() {
+    public String getTypeCredit() {
         return typeCredit;
     }
 
-    public void setTypeCredit(TypeCredit typeCredit) {
+    public void setTypeCredit(String typeCredit) {
         this.typeCredit = typeCredit;
     }
 

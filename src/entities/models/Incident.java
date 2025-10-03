@@ -1,13 +1,12 @@
 package entities.models;
 
 import entities.enums.TypeIncident;
-
 import java.time.LocalDate;
 
 public class Incident {
     private Integer id;
     private LocalDate dateIncident;
-    private Echeance echeance;
+    private Integer echeanceId;
     private Integer score;
     private TypeIncident typeIncident;
 
@@ -27,12 +26,12 @@ public class Incident {
         this.dateIncident = dateIncident;
     }
 
-    public Echeance getEcheance() {
-        return echeance;
+    public Integer getEcheanceId() {
+        return echeanceId;
     }
 
-    public void setEcheance(Echeance echeance) {
-        this.echeance = echeance;
+    public void setEcheanceId(Integer echeanceId) {
+        this.echeanceId = echeanceId;
     }
 
     public Integer getScore() {

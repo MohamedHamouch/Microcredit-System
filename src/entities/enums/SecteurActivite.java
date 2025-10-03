@@ -1,16 +1,13 @@
 package entities.enums;
 
 public enum SecteurActivite {
-    Agriculture,
-    Industrie,
-    Services,
-    Commerce,
-    Technologie,
-    Santé,
-    Éducation,
-    Finance,
-    Construction,
-    Transport,
-    Tourisme,
-    Autre
+    AGRICULTURE("Agriculture"),
+    SERVICE("Service"),
+    COMMERCE("Commerce"),
+    CONSTRUCTION("Construction"),
+    AUTRE("Autre");
+
+    private final String label;
+    SecteurActivite(String label) { this.label = label; }
+    public String getLabel() { return label; }
 }

@@ -1,11 +1,10 @@
 package entities.models;
 
 import entities.enums.SituationFamiliale;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Personne {
+public abstract class Personne {
     private Integer id;
     private String nom;
     private String prenom;
@@ -104,5 +103,18 @@ public class Personne {
 
     public void setSituationFamiliale(SituationFamiliale situationFamiliale) {
         this.situationFamiliale = situationFamiliale;
+    }
+    
+    @Override
+    public String toString() {
+        String situationLabel = situationFamiliale != null ? situationFamiliale.getLabel() : "Non définie";
+        return String.format("%s %s (ID: %d) - %s, %s - Score: %d - Enfants: %d", 
+            prenom != null ? prenom : "", 
+            nom != null ? nom : "", 
+            id != null ? id : 0, 
+            ville != null ? ville : "", 
+            situationLabel, 
+            score != null ? score : 0, 
+            nombreEnfants != null ? nombreEnfants : 0);
     }
 }

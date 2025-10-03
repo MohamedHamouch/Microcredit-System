@@ -1,14 +1,15 @@
 package entities.models;
 
-import entities.enums.StatusPaiment;
-
+import entities.enums.StatutPaiement;
 import java.time.LocalDate;
 
 public class Echeance {
     private Integer id;
+    private Integer creditId; 
     private LocalDate dateEcheance;
-    private Double name;
-    private StatusPaiment statusPaiement;
+    private LocalDate dateDePaiment;
+    private Double mensualite;
+    private StatutPaiement statutPaiement;
 
     public Integer getId() {
         return id;
@@ -16,6 +17,14 @@ public class Echeance {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCreditId() {
+        return creditId;
+    }
+
+    public void setCreditId(Integer creditId) {
+        this.creditId = creditId;
     }
 
     public Double getMensualite() {
@@ -26,6 +35,14 @@ public class Echeance {
         this.mensualite = mensualite;
     }
 
+    public LocalDate getDateEcheance() {
+        return dateEcheance;
+    }
+
+    public void setDateEcheance(LocalDate dateEcheance) {
+        this.dateEcheance = dateEcheance;
+    }
+
     public LocalDate getDateDePaiment() {
         return dateDePaiment;
     }
@@ -34,11 +51,11 @@ public class Echeance {
         this.dateDePaiment = dateDePaiment;
     }
 
-    public StatusPaiment getStatusPaiement() {
-        return statusPaiement;
+    public StatutPaiement getStatutPaiement() {
+        return statutPaiement;
     }
 
-    public void setStatusPaiement(StatusPaiment statusPaiement) {
-        this.statusPaiement = statusPaiement;
+    public void setStatutPaiement(StatutPaiement statutPaiement) {
+        this.statutPaiement = statutPaiement;
     }
 }
