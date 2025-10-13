@@ -54,9 +54,7 @@ public class EcheanceController {
             
             Echeance selectedEcheance = unpaidEcheances.get(choice - 1);
             
-            LocalDate paymentDate = LocalDate.now();
-            System.out.println("Date de paiement: " + paymentDate);
-            
+            LocalDate paymentDate = LocalDate.now();            
             echeanceService.recordPayment(selectedEcheance.getId(), paymentDate);
             
         } catch (SQLException e) {

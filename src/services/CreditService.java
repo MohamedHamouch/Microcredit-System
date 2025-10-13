@@ -4,10 +4,12 @@ import entities.enums.Decision;
 import entities.enums.TypeCredit;
 import entities.models.Credit;
 import entities.models.Personne;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+
 import repository.CreditRepository;
 import repository.PersonneRepository;
 
@@ -24,7 +26,7 @@ public class CreditService {
     }
 
     public Credit processCreditRequest(int personneId, double montantDemande,
-            double tauxInteret, TypeCredit typeCredit, int dureeEnMois) throws SQLException {
+                                       double tauxInteret, TypeCredit typeCredit, int dureeEnMois) throws SQLException {
 
         Optional<Personne> personneOpt = personneRepository.findById(personneId);
         if (!personneOpt.isPresent()) {
@@ -36,16 +38,25 @@ public class CreditService {
 
         Decision decision;
         double montantOctroye;
+        double capacity = 0.0;
+
+        boolean existant = isExistingClient(personneId);
+        if (!existant) {
+            capacity = ClientService.getMonthlyIncome(personne) * 4;
+
+        } else if (score > 80) {
+            capacity = ClientService.getMonthlyIncome(personne) * 10;
+        } else if (score > 60) {
+            capacity = ClientService.getMonthlyIncome(personne) * 7;
+        }
+        montantOctroye = Math.min(capacity, montantDemande);
 
         if (score >= 80) {
             decision = Decision.ACCORD_IMMEDIAT;
-            montantOctroye = montantDemande;
         } else if (score >= 60) {
             decision = Decision.ETUDE_MANUELLE;
-            montantOctroye = montantDemande;
         } else {
             decision = Decision.REFUS_AUTOMATIQUE;
-            montantOctroye = 0.0;
         }
         Credit credit = new Credit();
         credit.setPersonneId(personneId);
@@ -99,4 +110,11 @@ public class CreditService {
     public boolean isExistingClient(int personneId) throws SQLException {
         return creditRepository.hasExistingCredits(personneId);
     }
+
+    public double sumEmediat() throws SQLException {
+        return creditRepository.findAll().stream().filter(credit -> credit.getDecision() == Decision.ACCORD_IMMEDIAT)
+                .mapToDouble(c -> c.getMontantOctroye() * (1 + c.getTauxInteret()))
+                .sum();
+    }
+
 }

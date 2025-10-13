@@ -1,3 +1,4 @@
+import services.CreditService;
 import views.MainView;
 
 public class Main {
@@ -8,6 +9,7 @@ public class Main {
         try {
             MainView mainView = new MainView();
             mainView.showMainMenu();
+//            System.out.println(new CreditService().sumEmediat());
         } catch (Exception e) {
             System.err.println("Erreur lors du lancement du système: " + e.getMessage());
             e.printStackTrace();
